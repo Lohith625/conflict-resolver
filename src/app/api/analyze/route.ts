@@ -18,11 +18,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Description and your role are required' }, { status: 400 })
     }
 
-    // Run both AI calls — perspective analysis first, then drafts using the analysis
     const analysis = await analyzeConflict(description, userRole, otherRole)
     const drafts = await generateDrafts(description, analysis)
 
-    // Save to DB
+    // Cast to any to satisfy Prisma's Json type — safe because these are plain objects
     const conflict = await prisma.conflict.create({
       data: {
         userId: session.user.id,
@@ -30,8 +29,8 @@ export async function POST(req: NextRequest) {
         description,
         userRole,
         otherRole: otherRole || null,
-        analysis,
-        drafts,
+        analysis: analysis as any,
+        drafts: drafts as any,
         status: 'ANALYZED',
       },
     })
