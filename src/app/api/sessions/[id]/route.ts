@@ -35,7 +35,6 @@ export async function GET(
   }
 }
 
-// PATCH — save final draft when session resolves
 export async function PATCH(
   req: NextRequest,
   { params }: { params: { id: string } }
@@ -43,16 +42,16 @@ export async function PATCH(
   try {
     const { finalDraft } = await req.json()
 
-    const session = await prisma.coSession.update({
+    const coSession = await prisma.coSession.update({
       where: { id: params.id },
       data: {
-        finalDraft,
+        currentDraft: finalDraft,
         resolvedAt: new Date(),
       },
     })
 
     await prisma.conflict.update({
-      where: { id: session.conflictId },
+      where: { id: coSession.conflictId },
       data: { status: 'RESOLVED' },
     })
 
