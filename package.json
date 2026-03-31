@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "node src/server/server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node src/server/server.js",
+    "start": "npx prisma db push --accept-data-loss && node src/server/server.js",
     "lint": "next lint",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
