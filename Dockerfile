@@ -33,4 +33,4 @@ USER nextjs
 EXPOSE 3000
 ENV PORT=3000
 
-CMD ["node", "src/server/server.js"]
+CMD ["sh", "-c", "npx prisma db push --accept-data-loss && node src/server/server.js"]
