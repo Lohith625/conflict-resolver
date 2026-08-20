@@ -4,7 +4,7 @@
 
 A full-stack web application that helps people navigate difficult conversations. Describe what happened, get a neutral AI perspective, pick a draft message in your tone, and optionally co-draft a resolution with the other person in real time.
 
-**Live demo:** https://conflict-resolver-production.up.railway.app
+
 
 ---
 
@@ -215,4 +215,3 @@ src/
 **Lohith M** — BE Computer Science, BGSIT Mandya (Adichunchanagiri University)
 
 - GitHub: [@Lohith625](https://github.com/Lohith625)
-- Project: [conflict-resolver-production.up.railway.app](https://conflict-resolver-production.up.railway.app)
